@@ -1,6 +1,10 @@
 # Request and Response
 
-URL Parser, that takes a http request and returns a user from a table.
+URL Parser, that takes a http request and returns a user from a table based on the requests params.
+
+Request must be in the format of
+
+`GET http://localhost:3000/users/1 HTTP/1.1`
 
 ## Installation
 
