@@ -1,6 +1,6 @@
 # Request and Response
 
-URL Parser, that takes a http request and returns a user from a table based on the requests params.
+URL Parser, that takes an http request and returns a user from a table based on the request's params.
 
 Request must be in the format of
 
