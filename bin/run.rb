@@ -1,4 +1,5 @@
 require_relative '../db/setup'
+require_relative '../lib/user'
 # Remember to put the requires here for all the classes you write and want to use
 
 def parse_params(uri_fragments, query_param_string)
@@ -54,11 +55,23 @@ loop do
   else
     REQUEST = parse(raw_request)
     PARAMS  = REQUEST[:params]
-    # Use the REQUEST and PARAMS constants to full the request and
+    # Use the REQUEST and PARAMS constants to fill the request and
     # return an appropriate reponse
-
     # YOUR CODE GOES BELOW HERE
-
+    @users = User.all
+    puts REQUEST
+    if User.exists?(PARAMS[:id])
+      puts "200 OK"
+      user = @users.find(PARAMS[:id])
+      puts "#{user.first_name} #{user.last_name} | #{user.age}"
+    elsif PARAMS[:resource] == "users" && PARAMS[:id] == nil
+      puts "200 OK"
+      @users.each do |user|
+        puts "#{user.first_name} #{user.last_name} | #{user.age}"
+      end
+    else
+      puts "404 Not Found"
+    end
     # YOUR CODE GOES ABOVE HERE  ^
   end
 end
