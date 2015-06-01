@@ -64,6 +64,11 @@ loop do
       puts "200 OK"
       user = @users.find(PARAMS[:id])
       puts "#{user.first_name} #{user.last_name} | #{user.age}"
+    elsif PARAMS[:first_name]
+      starts_with = User.where("first_name LIKE ?", "#{PARAMS[:first_name]}%")
+      starts_with.each do |user|
+        puts "#{user.first_name} #{user.last_name} | #{user.age}"
+      end
     elsif PARAMS[:resource] == "users" && PARAMS[:id] == nil
       puts "200 OK"
       @users.each do |user|
